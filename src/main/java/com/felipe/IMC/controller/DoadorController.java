@@ -19,14 +19,14 @@ public class DoadorController {
     @Autowired
     private DoadorService doadorService;
 
+    //http://localhost:8080/swagger-ui/index.html
     @PostMapping(
             value = "processar-candidatos",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<?> processarDados(@RequestBody Pessoa[] json) {
+    public ResponseEntity<?> processarDados(@RequestBody Pessoa[] pessoas) {
         try {
-            String campos = Arrays.toString(json);
-            List<Pessoa> candidatosProcessados = doadorService.processarCandidatos(campos);
+            List<Pessoa> candidatosProcessados = doadorService.processarCandidatos(Arrays.toString(pessoas));
             return new ResponseEntity<>(candidatosProcessados, HttpStatus.OK);
         } catch (Exception e) {
             String errorMessage = "Ocorreu um erro durante o processamento dos candidatos: " + e.getMessage();

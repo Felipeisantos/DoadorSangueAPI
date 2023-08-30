@@ -56,8 +56,7 @@ public class Pessoa {
     private InformacoesFisicas informacoesFisicas;
 
     public enum Sexo {
-        MASCULINO,
-        FEMININO
+        MASCULINO, FEMININO
     }
 
     public Pessoa() {
