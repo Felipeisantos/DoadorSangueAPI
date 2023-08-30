@@ -11,7 +11,7 @@
     <groupId>com.felipe</groupId>
     <artifactId>DoadorSangueAPI</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>IMC</name>
+    <name>DoadorSangueAPI</name>
     <description>Projeto para teste de vaga fullstack</description>
     <properties>
         <java.version>17</java.version>

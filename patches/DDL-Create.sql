@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS IMC;
+CREATE DATABASE IF NOT EXISTS BancoDeSangue;
 
-use IMC;
+use BancoDeSangue;
 
 CREATE TABLE `contato` (
   `id` BIGINT  NOT NULL,
@@ -16,7 +16,6 @@ CREATE TABLE `contato` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- IMC.informacoesfisicas definition
 
 CREATE TABLE `informacoesfisicas` (
   `id` BIGINT  NOT NULL,
@@ -25,8 +24,6 @@ CREATE TABLE `informacoesfisicas` (
   `tipo_sanguineo` varchar(5) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- IMC.pessoa definition
 
 CREATE TABLE `pessoa` (
   `id` BIGINT  NOT NULL AUTO_INCREMENT,
@@ -52,9 +49,7 @@ CREATE TABLE usuario (
     senha VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
     ativo BOOLEAN NOT NULL,
-    role ENUM('USER', 'ADMIN') NOT NULL,
-    pessoa_id BIGINT,
-    FOREIGN KEY (pessoa_id) REFERENCES pessoa (id)
+    role ENUM('USER', 'ADMIN') NOT NULL
 );
 CREATE TABLE analise_candidato (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
