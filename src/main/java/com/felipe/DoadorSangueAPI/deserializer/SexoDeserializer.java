@@ -1,9 +1,9 @@
-package com.felipe.IMC.deserializer;
+package com.felipe.DoadorSangueAPI.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
-import com.felipe.IMC.model.Pessoa;
+import com.felipe.DoadorSangueAPI.model.Pessoa;
 
 import java.io.IOException;
 

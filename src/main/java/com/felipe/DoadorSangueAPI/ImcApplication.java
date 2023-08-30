@@ -1,4 +1,4 @@
-package com.felipe.IMC;
+package com.felipe.DoadorSangueAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

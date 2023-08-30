@@ -1,15 +1,14 @@
-package com.felipe.IMC.model;
+package com.felipe.DoadorSangueAPI.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.felipe.IMC.deserializer.SexoDeserializer;
+import com.felipe.DoadorSangueAPI.deserializer.SexoDeserializer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -20,6 +19,7 @@ public class Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @Column(nullable = false)
@@ -138,19 +138,19 @@ public class Pessoa {
         this.contato.setCelular(celular);
     }
 
-    public BigDecimal getAltura() {
+    public double getAltura() {
         return this.informacoesFisicas.getAltura();
     }
 
-    public void setAltura(BigDecimal altura) {
+    public void setAltura(double altura) {
         this.informacoesFisicas.setAltura(altura);
     }
 
-    public BigDecimal getPeso() {
+    public double getPeso() {
         return this.informacoesFisicas.getPeso();
     }
 
-    public void setPeso(BigDecimal peso) {
+    public void setPeso(double peso) {
         this.informacoesFisicas.setPeso(peso);
     }
 

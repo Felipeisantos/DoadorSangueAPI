@@ -1,5 +1,6 @@
-package com.felipe.IMC.model;
+package com.felipe.DoadorSangueAPI.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,6 +15,7 @@ public class Contato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
     @Column(nullable = false)
@@ -37,7 +39,7 @@ public class Contato {
     @Column(nullable = false)
     private String estado;
 
-    @Column(name="telefone_fixo")
+    @Column(name = "telefone_fixo")
     private String telefoneFixo;
 
     @Column(nullable = false)

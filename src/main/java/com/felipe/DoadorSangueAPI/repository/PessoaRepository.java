@@ -1,6 +1,6 @@
-package com.felipe.IMC.repository;
+package com.felipe.DoadorSangueAPI.repository;
 
-import com.felipe.IMC.model.Pessoa;
+import com.felipe.DoadorSangueAPI.model.Pessoa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

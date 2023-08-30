@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.felipe</groupId>
-    <artifactId>IMC</artifactId>
+    <artifactId>DoadorSangueAPI</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>IMC</name>
     <description>Projeto para teste de vaga fullstack</description>
