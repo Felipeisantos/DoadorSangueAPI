@@ -1,7 +1,8 @@
 package com.felipe.DoadorSangueAPI.controller;
 
 import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
-import com.felipe.DoadorSangueAPI.model.Pessoa;
+import com.felipe.DoadorSangueAPI.entities.Pessoa;
+import com.felipe.DoadorSangueAPI.entities.Usuario;
 import com.felipe.DoadorSangueAPI.service.DoadorService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +31,9 @@ public class DoadorController {
     public ResponseEntity<?> processarDados(@RequestBody List<Pessoa> candidatos) {
         try {
             AnaliseCandidatos analiseCandidatos = doadorService.processarCandidatos(candidatos);
-            return new ResponseEntity<>(analiseCandidatos, HttpStatus.OK);
+            return new ResponseEntity<>(analiseCandidatos.getResultadoAnalise(), HttpStatus.OK);
         } catch (Exception e) {
-            String errorMessage = "Ocorreu um erro durante o processamento dos candidatos: " + e.getMessage();
-            return new ResponseEntity<>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("Ocorreu um erro durante o processamento dos candidatos: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 

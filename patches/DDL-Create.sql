@@ -1,5 +1,9 @@
+CREATE DATABASE IF NOT EXISTS IMC;
+
+use IMC;
+
 CREATE TABLE `contato` (
-  `id` int NOT NULL,
+  `id` BIGINT  NOT NULL,
   `email` varchar(255) NOT NULL,
   `cep` varchar(10) NOT NULL,
   `endereco` varchar(255) NOT NULL,
@@ -15,7 +19,7 @@ CREATE TABLE `contato` (
 -- IMC.informacoesfisicas definition
 
 CREATE TABLE `informacoesfisicas` (
-  `id` int NOT NULL,
+  `id` BIGINT  NOT NULL,
   `altura` decimal(4,2) NOT NULL,
   `peso` decimal(5,2) NOT NULL,
   `tipo_sanguineo` varchar(5) NOT NULL,
@@ -25,7 +29,7 @@ CREATE TABLE `informacoesfisicas` (
 -- IMC.pessoa definition
 
 CREATE TABLE `pessoa` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` BIGINT  NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
   `cpf` varchar(14) NOT NULL,
   `rg` varchar(12) NOT NULL,
@@ -33,11 +37,30 @@ CREATE TABLE `pessoa` (
   `sexo` enum('Masculino','Feminino','Outro') NOT NULL,
   `mae` varchar(255) DEFAULT NULL,
   `pai` varchar(255) DEFAULT NULL,
-  `contato_id` int DEFAULT NULL,
-  `informacoes_fisicas_id` int DEFAULT NULL,
+  `contato_id` BIGINT  DEFAULT NULL,
+  `informacoes_fisicas_id` BIGINT  DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `contato_id` (`contato_id`),
   KEY `informacoes_fisicas_id` (`informacoes_fisicas_id`),
   CONSTRAINT `pessoa_ibfk_1` FOREIGN KEY (`contato_id`) REFERENCES `contato` (`id`),
   CONSTRAINT `pessoa_ibfk_2` FOREIGN KEY (`informacoes_fisicas_id`) REFERENCES `informacoesfisicas` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE usuario (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(50) NOT NULL UNIQUE,
+    senha VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    role ENUM('USER', 'ADMIN') NOT NULL,
+    pessoa_id BIGINT,
+    FOREIGN KEY (pessoa_id) REFERENCES pessoa (id)
+);
+CREATE TABLE analise_candidato (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    data_requisicao TIMESTAMP NOT NULL,
+    caminho_json VARCHAR(255) NOT NULL,
+    nome_arquivo VARCHAR(255) NOT NULL,
+    solicitacao_usuario_id BIGINT,
+    FOREIGN KEY (solicitacao_usuario_id) REFERENCES usuario (id)
+);

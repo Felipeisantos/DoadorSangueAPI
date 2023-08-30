@@ -1,4 +1,4 @@
-package com.felipe.DoadorSangueAPI.model;
+package com.felipe.DoadorSangueAPI.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

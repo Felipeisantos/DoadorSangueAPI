@@ -1,9 +1,10 @@
 package com.felipe.DoadorSangueAPI.repository;
 
-import com.felipe.DoadorSangueAPI.entities.Contato;
+import com.felipe.DoadorSangueAPI.entities.AnaliseCandidato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ContatoRepository extends JpaRepository<Contato, Long> {
+public interface AnaliseCandidatoRepository extends JpaRepository<AnaliseCandidato, Long> {
+
 }
