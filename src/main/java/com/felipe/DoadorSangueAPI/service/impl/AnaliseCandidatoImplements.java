@@ -25,32 +25,32 @@ public class AnaliseCandidatoImplements implements AnaliseCandidatoService {
     );
 
     @Override
-    public Map<String, Long> calcularCandidatosPorEstado(List<Pessoa> candidatos) {
+    public Map<String, Long> calcularCandidatosPorEstado(List<Pessoa> candidatos) throws Exception {
         return candidatos.stream().collect(Collectors.groupingBy(Pessoa::getEstado, Collectors.counting()));
     }
 
     @Override
-    public Map<String, Double> calcularIMCMedioPorFaixaEtaria(List<Pessoa> candidatos) {
+    public Map<String, Double> calcularIMCMedioPorFaixaEtaria(List<Pessoa> candidatos) throws Exception {
         return candidatos.stream()
                 .collect(Collectors.groupingBy(this::calcularFaixaDeIdade,
                         Collectors.averagingDouble(this::calcularImc)));
     }
 
     @Override
-    public Map<Pessoa.Sexo, Long> calcularPercentualObesosPorGenero(List<Pessoa> candidatos) {
+    public Map<Pessoa.Sexo, Long> calcularPercentualObesosPorGenero(List<Pessoa> candidatos) throws Exception {
         return candidatos.stream()
                 .collect(Collectors.groupingBy(Pessoa::getSexo, Collectors.counting()));
     }
 
     @Override
-    public Map<String, Double> calcularMediaIdadePorTipoSanguineo(List<Pessoa> candidatos) {
+    public Map<String, Double> calcularMediaIdadePorTipoSanguineo(List<Pessoa> candidatos) throws Exception {
         return candidatos.stream()
                 .collect(Collectors.groupingBy(Pessoa::getTipoSanguineo,
                         Collectors.averagingDouble(pessoa -> obterAnos(converteParaLocalDate(pessoa.getDataNascimento())))));
     }
 
     @Override
-    public Map<String, Long> calcularQuantidadeDoadoresPorTipoSanguineo(List<Pessoa> candidatos) {
+    public Map<String, Long> calcularQuantidadeDoadoresPorTipoSanguineo(List<Pessoa> candidatos) throws Exception {
         return candidatos.stream()
                 .filter(this::canDonateBlood)
                 .flatMap(candidato -> donationReceptorMap.getOrDefault(candidato.getTipoSanguineo(), Set.of()).stream())

@@ -1,6 +1,6 @@
 package com.felipe.DoadorSangueAPI.controller;
 
-import com.felipe.DoadorSangueAPI.model.AnaliseCandidatos;
+import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
 import com.felipe.DoadorSangueAPI.model.Pessoa;
 import com.felipe.DoadorSangueAPI.service.DoadorService;
 import io.swagger.v3.oas.annotations.Operation;

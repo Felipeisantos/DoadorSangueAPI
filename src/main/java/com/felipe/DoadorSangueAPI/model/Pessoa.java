@@ -17,6 +17,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class Pessoa {
 
+    static final long serialVersionUID = -4549034553598949313L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
