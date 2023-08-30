@@ -30,7 +30,7 @@
 ### Lombok:
 <p>framework de produtividade onde as anoteções geram getter setter e construtores para as entidades e objetos</p>
 
-### Lombok:
+### spring-boot-devtools:
 <p>framework de produtividade ao salvar os arquivos do programa o spring faz uma recarga automática das classes sem derrubar a aplicação</p>
 
 <h1 align="center"></h1>
