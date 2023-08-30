@@ -1,5 +1,6 @@
 package com.felipe.DoadorSangueAPI.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,10 +26,12 @@ public class AnaliseCandidato {
     @Column(name = "data_requisicao", nullable = false)
     private Date dataRequisicao;
 
+
     @Column(name = "caminho_json", nullable = false)
     private String caminhoJson;
 
-    @Column(name = "nome_arquivo", nullable = false)
+
+    @Column(name = "nome_arquivo")
     private String nomeArquivo;
 
     @ManyToOne

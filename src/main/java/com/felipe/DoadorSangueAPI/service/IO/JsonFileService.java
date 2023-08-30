@@ -17,18 +17,18 @@ public class JsonFileService {
     @Value("${json.storagePath}")
     private String storagePath;
 
-    public void saveJsonFile(String Json, String fileName) throws IOException {
-        File targetDirectory = new File(storagePath);
-        if (!targetDirectory.exists()) {
-            targetDirectory.mkdirs();
-        }
-        File targetFile = new File(storagePath + File.separator + fileName);
+    public void saveJsonFile(String Json, String directory, String fileName) throws IOException {
+        File directoryFile = new File(directory);
+        if (!directoryFile.getAbsoluteFile().exists())
+            directoryFile.mkdirs();
+
+        File targetFile = new File(directory + File.separator + fileName);
         Files.write(targetFile.toPath(), Json.getBytes());
     }
 
-    public <T> T loadJsonFile(String fileName, Class<T> clazz) throws IOException {
+    public <T> T loadJsonFile(String directory, String fileName, Class<T> clazz) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File(storagePath + File.separator + fileName);
+        File file = new File(directory + File.separator + fileName);
         return objectMapper.readValue(file, clazz);
     }
 

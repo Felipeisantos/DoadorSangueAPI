@@ -16,7 +16,7 @@ import java.util.List;
 
 @ResponseBody
 @RestController
-@RequestMapping("/")
+@RequestMapping("/doador/")
 public class DoadorController {
 
     @Autowired

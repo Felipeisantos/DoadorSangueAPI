@@ -55,7 +55,7 @@ CREATE TABLE analise_candidato (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     data_requisicao TIMESTAMP NOT NULL,
     caminho_json VARCHAR(255) NOT NULL,
-    nome_arquivo VARCHAR(255) NOT NULL,
+    nome_arquivo VARCHAR(255),
     solicitacao_usuario_id BIGINT,
     FOREIGN KEY (solicitacao_usuario_id) REFERENCES usuario (id)
 );

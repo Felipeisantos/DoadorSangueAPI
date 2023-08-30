@@ -1,8 +1,10 @@
 package com.felipe.DoadorSangueAPI.service;
 
+import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -17,5 +19,9 @@ public interface AnaliseCandidatoService {
     Map<String, Double> calcularMediaIdadePorTipoSanguineo(List<Pessoa> candidatos);
 
     Map<String, Long> calcularPotenciaisDoadoresPorTipoSanguineo(List<Pessoa> candidatos);
+
+    List<AnaliseCandidatos> obterTodasAnalises();
+
+    AnaliseCandidatos obterAnalisePorId(Long id) throws IOException;
 
 }

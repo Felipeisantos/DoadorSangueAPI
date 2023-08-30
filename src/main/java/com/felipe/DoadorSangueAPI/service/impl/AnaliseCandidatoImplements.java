@@ -1,9 +1,16 @@
 package com.felipe.DoadorSangueAPI.service.impl;
 
+import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
+import com.felipe.DoadorSangueAPI.entities.AnaliseCandidato;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
+import com.felipe.DoadorSangueAPI.repository.AnaliseCandidatoRepository;
 import com.felipe.DoadorSangueAPI.service.AnaliseCandidatoService;
+import com.felipe.DoadorSangueAPI.service.IO.JsonFileService;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
@@ -13,6 +20,13 @@ import java.util.stream.Collectors;
 
 @Service
 public class AnaliseCandidatoImplements implements AnaliseCandidatoService {
+
+    @Autowired
+    AnaliseCandidatoRepository analiseCandidatoRepository;
+
+    @Autowired
+    JsonFileService jsonFileService;
+
     private static final Map<String, Set<String>> donationReceptorMap = Map.of(
             "A+", Set.of("AB+", "A+"),
             "A-", Set.of("A+", "A-", "AB+", "AB-"),
@@ -64,6 +78,30 @@ public class AnaliseCandidatoImplements implements AnaliseCandidatoService {
                 .filter(this::canDonateBlood)
                 .flatMap(candidato -> donationReceptorMap.getOrDefault(candidato.getTipoSanguineo(), Set.of()).stream())
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
+
+    @Override
+    public List<AnaliseCandidatos> obterTodasAnalises() {
+        return analiseCandidatoRepository.findAll().stream().map(analiseCandidato -> {
+            try {
+                return jsonFileService.loadJsonFile(analiseCandidato.getCaminhoJson(), analiseCandidato.getNomeArquivo(), AnaliseCandidatos.class);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).collect(Collectors.toList());
+    }
+
+    @Override
+    public AnaliseCandidatos obterAnalisePorId(Long id) throws EntityNotFoundException, IOException {
+        return analiseCandidatoRepository.findById(id)
+                .map(analiseCandidato -> {
+                    try {
+                        return jsonFileService.loadJsonFile(analiseCandidato.getCaminhoJson(), analiseCandidato.getNomeArquivo(), AnaliseCandidatos.class);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                })
+                .orElseThrow(() -> new EntityNotFoundException("Análise não encontrada com o ID: " + id));
     }
 
     private String calcularFaixaDeIdade(Pessoa pessoa) {
