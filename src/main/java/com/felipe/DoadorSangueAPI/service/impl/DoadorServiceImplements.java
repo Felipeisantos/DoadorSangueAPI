@@ -3,6 +3,8 @@ package com.felipe.DoadorSangueAPI.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
+import com.felipe.DoadorSangueAPI.dto.ChaveValor;
+import com.felipe.DoadorSangueAPI.dto.ChaveValorDouble;
 import com.felipe.DoadorSangueAPI.entities.AnaliseCandidato;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
 import com.felipe.DoadorSangueAPI.entities.Usuario;
@@ -18,6 +20,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class DoadorServiceImplements implements DoadorService {
@@ -43,11 +47,11 @@ public class DoadorServiceImplements implements DoadorService {
 
         AnaliseCandidatos analiseCandidatos = new AnaliseCandidatos();
         analiseCandidatos.setCandidatos(candidatos);
-        analiseCandidatos.getResultadoAnalise().setPotenciaisDoadoresPorTipoSanguineo(analiseCandidatoService.calcularPotenciaisDoadoresPorTipoSanguineo(candidatos));
-        analiseCandidatos.getResultadoAnalise().setImcMedioPorFaixaDeIdade(analiseCandidatoService.calcularIMCMedioPorFaixaEtaria(candidatos));
-        analiseCandidatos.getResultadoAnalise().setMediaIdadeTipoSanguineo(analiseCandidatoService.calcularMediaIdadePorTipoSanguineo(candidatos));
-        analiseCandidatos.getResultadoAnalise().setCandidatoPorEstado(analiseCandidatoService.calcularCandidatosPorEstado(candidatos));
-        analiseCandidatos.getResultadoAnalise().setPorcentagemObesidadePorGenero(analiseCandidatoService.calcularPercentualObesosPorGenero(candidatos));
+        analiseCandidatos.getResultadoAnalise().setPotenciaisDoadoresPorTipoSanguineo(converterHashMapParaLista(analiseCandidatoService.calcularPotenciaisDoadoresPorTipoSanguineo(candidatos)));
+        analiseCandidatos.getResultadoAnalise().setImcMedioPorFaixaDeIdade(converterHashMapParaListaDouble(analiseCandidatoService.calcularIMCMedioPorFaixaEtaria(candidatos)));
+        analiseCandidatos.getResultadoAnalise().setMediaIdadeTipoSanguineo(converterHashMapParaListaDouble(analiseCandidatoService.calcularMediaIdadePorTipoSanguineo(candidatos)));
+        analiseCandidatos.getResultadoAnalise().setCandidatoPorEstado(converterHashMapParaLista(analiseCandidatoService.calcularCandidatosPorEstado(candidatos)));
+        analiseCandidatos.getResultadoAnalise().setPorcentagemObesidadePorGenero(converterHashMapParaListaDouble(analiseCandidatoService.calcularPercentualObesosPorGenero(candidatos)));
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             AnaliseCandidato analiseCandidato = new AnaliseCandidato();
@@ -61,11 +65,22 @@ public class DoadorServiceImplements implements DoadorService {
 
             jsonFileService.saveJsonFile(objectMapper.writeValueAsString(analiseCandidatos), analiseCandidato.getCaminhoJson(), analiseCandidato.getNomeArquivo());
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
             return null;
         }
 
         return analiseCandidatos;
 
+    }
+    public static List<ChaveValor> converterHashMapParaLista(Map<String, Long> hashMap) {
+        return hashMap.entrySet()
+                .stream()
+                .map(entry -> new ChaveValor(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
+    }
+    public static List<ChaveValorDouble> converterHashMapParaListaDouble(Map<String, Double> hashMap) {
+        return hashMap.entrySet()
+                .stream()
+                .map(entry -> new ChaveValorDouble(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
     }
 }

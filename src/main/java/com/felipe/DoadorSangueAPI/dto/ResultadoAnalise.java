@@ -1,20 +1,19 @@
 package com.felipe.DoadorSangueAPI.dto;
 
-import com.felipe.DoadorSangueAPI.entities.Pessoa;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ResultadoAnalise {
-    static final long serialVersionUID = -6645723399665418584L;
-    private Map<String, Long> candidatoPorEstado;
-    private Map<String, Double> imcMedioPorFaixaDeIdade;
-    private Map<Pessoa.Sexo, Double> porcentagemObesidadePorGenero;
-    private Map<String, Double> mediaIdadeTipoSanguineo;
-    private Map<String, Long> potenciaisDoadoresPorTipoSanguineo;
+
+    private List<ChaveValor> candidatoPorEstado;
+    private List<ChaveValorDouble> imcMedioPorFaixaDeIdade;
+    private List<ChaveValorDouble> porcentagemObesidadePorGenero;
+    private List<ChaveValorDouble> mediaIdadeTipoSanguineo;
+    private List<ChaveValor> potenciaisDoadoresPorTipoSanguineo;
 }

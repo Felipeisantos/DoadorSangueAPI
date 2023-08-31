@@ -14,7 +14,7 @@ public interface AnaliseCandidatoService {
 
     Map<String, Double> calcularIMCMedioPorFaixaEtaria(List<Pessoa> candidatos);
 
-    Map<Pessoa.Sexo, Double> calcularPercentualObesosPorGenero(List<Pessoa> candidatos);
+    Map<String, Double> calcularPercentualObesosPorGenero(List<Pessoa> candidatos);
 
     Map<String, Double> calcularMediaIdadePorTipoSanguineo(List<Pessoa> candidatos);
 

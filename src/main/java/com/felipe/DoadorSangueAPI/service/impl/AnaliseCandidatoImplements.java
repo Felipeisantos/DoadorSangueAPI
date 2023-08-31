@@ -53,10 +53,10 @@ public class AnaliseCandidatoImplements implements AnaliseCandidatoService {
     }
 
     @Override
-    public Map<Pessoa.Sexo, Double> calcularPercentualObesosPorGenero(List<Pessoa> candidatos) {
+    public Map<String, Double> calcularPercentualObesosPorGenero(List<Pessoa> candidatos) {
         return candidatos.stream()
-                .collect(Collectors.groupingBy(Pessoa::getSexo,
-                        Collectors.collectingAndThen(Collectors.toList(), (List<Pessoa> pessoas) -> {
+                .collect(Collectors.groupingBy(pessoa -> pessoa.getSexo().toString(),
+                        Collectors.collectingAndThen(Collectors.toList(), pessoas -> {
                             long totalObesos = pessoas.stream()
                                     .filter(pessoa -> calcularImc(pessoa) >= 30.0)
                                     .count();
