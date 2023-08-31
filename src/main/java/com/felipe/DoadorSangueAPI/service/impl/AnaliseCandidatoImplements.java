@@ -1,6 +1,8 @@
 package com.felipe.DoadorSangueAPI.service.impl;
 
 import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
+import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatosInfo;
+import com.felipe.DoadorSangueAPI.entities.AnaliseCandidato;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
 import com.felipe.DoadorSangueAPI.repository.AnaliseCandidatoRepository;
 import com.felipe.DoadorSangueAPI.service.AnaliseCandidatoService;
@@ -13,10 +15,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -82,6 +81,12 @@ public class AnaliseCandidatoImplements implements AnaliseCandidatoService {
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 
+    @Override
+    public List<AnaliseCandidatosInfo> obterTodosIdsAnalises(){
+        return analiseCandidatoRepository.buscarTodosIdsAnalise().stream()
+                .map(candidato -> new AnaliseCandidatosInfo(candidato.getId(), candidato.getDataRequisicao())).collect(Collectors.toList());
+
+    }
     @Override
     public List<AnaliseCandidatos> obterTodasAnalises() {
         return analiseCandidatoRepository.findAll().stream().map(analiseCandidato -> {

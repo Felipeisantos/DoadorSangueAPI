@@ -21,7 +21,7 @@ public class AnaliseCandidatoController {
     @Operation(summary = "Obtem todas as análises", description = "Retorna um Objeto contendo todas as análises")
     public ResponseEntity<?> listarAnalises() {
         try {
-            return new ResponseEntity<>(analiseCandidatoService.obterTodasAnalises(), HttpStatus.OK);
+            return new ResponseEntity<>(analiseCandidatoService.obterTodosIdsAnalises(), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Ocorreu um erro durante o processamento dos candidatos: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
