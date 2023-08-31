@@ -7,9 +7,8 @@ import com.felipe.DoadorSangueAPI.dto.ChaveValor;
 import com.felipe.DoadorSangueAPI.dto.ChaveValorDouble;
 import com.felipe.DoadorSangueAPI.entities.AnaliseCandidato;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
-import com.felipe.DoadorSangueAPI.entities.Usuario;
 import com.felipe.DoadorSangueAPI.repository.AnaliseCandidatoRepository;
-import com.felipe.DoadorSangueAPI.repository.UsuarioRepository;
+import com.felipe.DoadorSangueAPI.repository.UserRepository;
 import com.felipe.DoadorSangueAPI.service.AnaliseCandidatoService;
 import com.felipe.DoadorSangueAPI.service.DoadorService;
 import com.felipe.DoadorSangueAPI.service.IO.JsonFileService;
@@ -36,7 +35,7 @@ public class DoadorServiceImplements implements DoadorService {
     AnaliseCandidatoRepository analiseCandidatoRepository;
 
     @Autowired
-    UsuarioRepository usuarioRepository;
+    UserRepository usuarioRepository;
 
     @Value("${json.storagePath}")
     private String storagePath;
@@ -56,7 +55,7 @@ public class DoadorServiceImplements implements DoadorService {
         try {
             AnaliseCandidato analiseCandidato = new AnaliseCandidato();
             analiseCandidato.setCaminhoJson(System.getProperty("user.dir") + storagePath);
-            analiseCandidato.setSolicitacaoUsuario(usuarioRepository.findById(1).orElse(new Usuario()));
+            analiseCandidato.setSolicitacaoUsuario(usuarioRepository.findById(1).orElse(null));
             analiseCandidato.setDataRequisicao(new Date());
             analiseCandidato = analiseCandidatoRepository.save(analiseCandidato);
             analiseCandidato.setNomeArquivo("analise" + analiseCandidato.getId() + ".json");
@@ -71,12 +70,14 @@ public class DoadorServiceImplements implements DoadorService {
         return analiseCandidatos;
 
     }
+
     public static List<ChaveValor> converterHashMapParaLista(Map<String, Long> hashMap) {
         return hashMap.entrySet()
                 .stream()
                 .map(entry -> new ChaveValor(entry.getKey(), entry.getValue()))
                 .collect(Collectors.toList());
     }
+
     public static List<ChaveValorDouble> converterHashMapParaListaDouble(Map<String, Double> hashMap) {
         return hashMap.entrySet()
                 .stream()

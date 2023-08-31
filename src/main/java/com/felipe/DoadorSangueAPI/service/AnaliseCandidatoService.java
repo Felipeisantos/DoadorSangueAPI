@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@Service
+
 public interface AnaliseCandidatoService {
     Map<String, Long> calcularCandidatosPorEstado(List<Pessoa> candidatos);
 
