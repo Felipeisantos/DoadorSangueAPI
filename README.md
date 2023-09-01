@@ -10,7 +10,7 @@
 - ``InteliJ IDEA``
 - ``Insomnia``
 - ``Mysql``
-- ``Paradigma de orientação a objetos``
+- ``POO``
 - ``Design Pattern``
 
 <p>Frameworks utilizados:</p>
@@ -28,7 +28,7 @@
 <p>framework de documentação onde ficam disponiveis todos os end-points da api</p>
 
 ### lombok:
-<p>framework de produtividade onde as anoteções geram getter setter e construtores para as entidades e objetos</p>
+<p>framework de produtividade onde as anotações geram getter setter e construtores para as entidades e objetos</p>
 
 ### spring-boot-devtools:
 <p>framework de produtividade ao salvar os arquivos do programa o spring faz uma recarga automática das classes sem derrubar a aplicação</p>

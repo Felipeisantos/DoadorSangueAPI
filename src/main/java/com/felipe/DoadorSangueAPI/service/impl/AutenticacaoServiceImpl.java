@@ -36,16 +36,11 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 
     @Override
     public JwtAuthenticationResponse signin(SigninRequest request) {
-        try {
-            authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-            Usuario usuario = usuarioRepository.findByEmail(request.getEmail())
-                    .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
-            String jwt = jwtService.generateToken(usuario);
-            return JwtAuthenticationResponse.builder().token(jwt).build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
+        Usuario usuario = usuarioRepository.findByEmail(request.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
+        String jwt = jwtService.generateToken(usuario);
+        return JwtAuthenticationResponse.builder().token(jwt).build();
     }
 }
