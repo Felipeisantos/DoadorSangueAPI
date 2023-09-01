@@ -4,7 +4,7 @@ package com.felipe.DoadorSangueAPI.config;
 import java.io.IOException;
 
 import com.felipe.DoadorSangueAPI.service.JwtService;
-import com.felipe.DoadorSangueAPI.service.UserService;
+import com.felipe.DoadorSangueAPI.service.UsuarioService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
-    private final UserService userService;
+    private final UsuarioService usuarioService;
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request,
@@ -42,7 +42,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         userEmail = jwtService.extractUserName(jwt);
         if (StringUtils.isNotEmpty(userEmail)
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userService.userDetailsService()
+            UserDetails userDetails = usuarioService.userDetailsService()
                     .loadUserByUsername(userEmail);
             if (jwtService.isTokenValid(jwt, userDetails)) {
                 SecurityContext context = SecurityContextHolder.createEmptyContext();

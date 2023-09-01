@@ -8,7 +8,7 @@ import com.felipe.DoadorSangueAPI.dto.ChaveValorDouble;
 import com.felipe.DoadorSangueAPI.entities.AnaliseCandidato;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
 import com.felipe.DoadorSangueAPI.repository.AnaliseCandidatoRepository;
-import com.felipe.DoadorSangueAPI.repository.UserRepository;
+import com.felipe.DoadorSangueAPI.repository.UsuarioRepository;
 import com.felipe.DoadorSangueAPI.service.AnaliseCandidatoService;
 import com.felipe.DoadorSangueAPI.service.DoadorService;
 import com.felipe.DoadorSangueAPI.service.IO.JsonFileService;
@@ -35,7 +35,7 @@ public class DoadorServiceImplements implements DoadorService {
     AnaliseCandidatoRepository analiseCandidatoRepository;
 
     @Autowired
-    UserRepository usuarioRepository;
+    UsuarioRepository usuarioRepository;
 
     @Value("${json.storagePath}")
     private String storagePath;

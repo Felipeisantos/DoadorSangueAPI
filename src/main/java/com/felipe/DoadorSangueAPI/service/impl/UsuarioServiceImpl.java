@@ -1,7 +1,7 @@
 package com.felipe.DoadorSangueAPI.service.impl;
 
-import com.felipe.DoadorSangueAPI.repository.UserRepository;
-import com.felipe.DoadorSangueAPI.service.UserService;
+import com.felipe.DoadorSangueAPI.repository.UsuarioRepository;
+import com.felipe.DoadorSangueAPI.service.UsuarioService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,15 +11,15 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+public class UsuarioServiceImpl implements UsuarioService {
+    private final UsuarioRepository usuarioRepository;
 
     @Override
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
             @Override
             public UserDetails loadUserByUsername(String username) {
-                return userRepository.findByEmail(username)
+                return usuarioRepository.findByEmail(username)
                         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
             }
         };

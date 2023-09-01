@@ -34,7 +34,7 @@ public class AnaliseCandidato {
 
     @ManyToOne
     @PrimaryKeyJoinColumn
-    private User solicitacaoUsuario;
+    private Usuario solicitacaoUsuario;
 
 
 }

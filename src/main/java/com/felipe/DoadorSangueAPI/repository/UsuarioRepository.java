@@ -1,12 +1,12 @@
 package com.felipe.DoadorSangueAPI.repository;
 
-import com.felipe.DoadorSangueAPI.entities.User;
+import com.felipe.DoadorSangueAPI.entities.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
-    Optional<User> findByEmail(String email);
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+    Optional<Usuario> findByEmail(String email);
 }
