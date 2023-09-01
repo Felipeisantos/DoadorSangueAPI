@@ -43,13 +43,13 @@ CREATE TABLE `pessoa` (
   CONSTRAINT `pessoa_ibfk_2` FOREIGN KEY (`informacoes_fisicas_id`) REFERENCES `informacoesfisicas` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE usuario (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    login VARCHAR(50) NOT NULL UNIQUE,
-    senha VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    ativo BOOLEAN NOT NULL,
-    role ENUM('USER', 'ADMIN') NOT NULL
+CREATE TABLE user (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    email VARCHAR(255) UNIQUE,
+    password VARCHAR(255),
+    role VARCHAR(255)
 );
 CREATE TABLE analise_candidato (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface DoadorService {
     AnaliseCandidatos processarCandidatos(List<Pessoa> candidatos) throws Exception;
 }

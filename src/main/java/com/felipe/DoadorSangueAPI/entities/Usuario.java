@@ -1,60 +1,66 @@
 package com.felipe.DoadorSangueAPI.entities;
 
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-@Entity
-@Table(name = "usuario")
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class Usuario {
-
+@AllArgsConstructor
+@Entity
+@Table(name = "user")
+public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-
-    @Column(nullable = false, unique = true)
-    private String login;
-
-    @Column(nullable = false)
-    private String senha;
-
-    @Column(nullable = false)
+    private Integer id;
+    private String firstName;
+    private String lastName;
+    @Column(unique = true)
     private String email;
-
-    private boolean ativo;
-
+    private String password;
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private Role role;
 
-    public enum Role {
-        USER,
-        ADMIN
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    public String geraSenha(String senha) {
-        try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(senha.getBytes());
+    @Override
+    public String getUsername() {
+        // email in our case
+        return email;
+    }
 
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                String hex = Integer.toHexString(0xff & b);
-                if (hex.length() == 1) hexString.append('0');
-                hexString.append(hex);
-            }
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-            return null;
-        }
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }
+
