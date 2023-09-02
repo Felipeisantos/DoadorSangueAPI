@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 public class Usuario implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String firstName;
     private String lastName;
     @Column(unique = true)
@@ -39,7 +39,6 @@ public class Usuario implements UserDetails {
 
     @Override
     public String getUsername() {
-        // email in our case
         return email;
     }
 

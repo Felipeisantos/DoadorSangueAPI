@@ -19,6 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AutenticacaoController {
+
     private final AutenticacaoService autenticacaoService;
 
     @PostMapping(
@@ -27,7 +28,11 @@ public class AutenticacaoController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @Operation(summary = "Cadastro de novos usuários", description = "Cadastro de usuário")
     public ResponseEntity<JwtAuthenticationResponse> signup(@RequestBody SignUpRequest request) {
-        return new ResponseEntity<>(autenticacaoService.signup(request), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(autenticacaoService.signup(request), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new JwtAuthenticationResponse(), HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PostMapping(value = "/signin",
@@ -35,6 +40,10 @@ public class AutenticacaoController {
             produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
     @Operation(summary = "Login usuário", description = "Login de usuário")
     public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SigninRequest request) {
-        return new ResponseEntity<>(autenticacaoService.signin(request), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(autenticacaoService.signin(request), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new JwtAuthenticationResponse(), HttpStatus.UNAUTHORIZED);
+        }
     }
 }

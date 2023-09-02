@@ -26,12 +26,20 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
 
     @Override
     public JwtAuthenticationResponse signup(SignUpRequest request) {
-        Usuario usuario = Usuario.builder().firstName(request.getFirstName()).lastName(request.getLastName())
-                .email(request.getEmail()).password(passwordEncoder.encode(request.getPassword()))
+        Usuario usuario = Usuario.builder().
+                firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .email(request.getEmail())
+                .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER).build();
-        usuarioRepository.save(usuario);
+        try {
+            usuarioRepository.save(usuario);
+        }catch (Exception e)
+        {
+           throw e;
+        }
         String jwt = jwtService.generateToken(usuario);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        return JwtAuthenticationResponse.builder().token(jwt).expirationDate(jwtService.extractExpiration(jwt)).build();
     }
 
     @Override

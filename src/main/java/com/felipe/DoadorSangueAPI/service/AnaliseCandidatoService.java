@@ -3,6 +3,7 @@ package com.felipe.DoadorSangueAPI.service;
 import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
 import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatosInfo;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
+import com.felipe.DoadorSangueAPI.entities.Usuario;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -21,10 +22,12 @@ public interface AnaliseCandidatoService {
 
     Map<String, Long> calcularPotenciaisDoadoresPorTipoSanguineo(List<Pessoa> candidatos);
 
-    List<AnaliseCandidatosInfo> obterTodosIdsAnalises();
+    List<AnaliseCandidatosInfo> obterTodosIdsAnalisesPeloIdUsuario(Long id);
 
     List<AnaliseCandidatos> obterTodasAnalises();
 
-    AnaliseCandidatos obterAnalisePorId(Long id) throws IOException;
+    AnaliseCandidatos obterAnalisePorId(Long id, Usuario usuario) throws IOException;
+
+    AnaliseCandidatos processarCandidatos(List<Pessoa> candidatos, Usuario usuario) throws Exception;
 
 }

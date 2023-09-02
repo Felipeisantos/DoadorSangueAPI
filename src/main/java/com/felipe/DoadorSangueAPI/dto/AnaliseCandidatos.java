@@ -5,13 +5,16 @@ import com.felipe.DoadorSangueAPI.entities.Pessoa;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
-public class AnaliseCandidatos {
+public class AnaliseCandidatos implements Serializable {
 
-    static final long serialVersionUID = -400269345401625187L;
+    @Serial
+    private static final long serialVersionUID = -400269345401625187L;
     private Long id;
     private ResultadoAnalise resultadoAnalise;
     @JsonIgnore

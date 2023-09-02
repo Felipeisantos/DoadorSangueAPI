@@ -12,6 +12,6 @@ public class SexoDeserializer extends JsonDeserializer<Pessoa.Sexo> {
     @Override
     public Pessoa.Sexo deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         String sexo = p.getText();
-        return Pessoa.Sexo.valueOf(sexo.toUpperCase()); // Convertendo para maiúsculas
+        return Pessoa.Sexo.valueOf(sexo.toUpperCase());
     }
 }
