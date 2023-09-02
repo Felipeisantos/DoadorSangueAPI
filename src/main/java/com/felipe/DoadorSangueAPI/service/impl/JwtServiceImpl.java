@@ -50,7 +50,7 @@ public class JwtServiceImpl implements JwtService {
                     .setClaims(extraClaims)
                     .setSubject(userDetails.getUsername())
                     .setIssuedAt(new Date(System.currentTimeMillis()))
-                    .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
+                    .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 20)) // 20 minutos autenticado
                     .signWith(key)
                     .compact();
         } catch (Exception e) {
@@ -64,12 +64,11 @@ public class JwtServiceImpl implements JwtService {
             Date expirationDate = extractExpiration(token);
             return expirationDate.before(new Date());
         } catch (ExpiredJwtException ex) {
-            // Handle expired token exception
             return true;
         }
     }
 
-    private Date extractExpiration(String token) {
+    public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 

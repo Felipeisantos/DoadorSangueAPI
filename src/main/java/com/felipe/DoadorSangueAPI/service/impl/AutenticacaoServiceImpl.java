@@ -41,6 +41,6 @@ public class AutenticacaoServiceImpl implements AutenticacaoService {
         Usuario usuario = usuarioRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new IllegalArgumentException("Invalid email or password."));
         String jwt = jwtService.generateToken(usuario);
-        return JwtAuthenticationResponse.builder().token(jwt).build();
+        return JwtAuthenticationResponse.builder().token(jwt).expirationDate(jwtService.extractExpiration(jwt)).build();
     }
 }
