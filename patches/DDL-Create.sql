@@ -43,8 +43,8 @@ CREATE TABLE `pessoa` (
   CONSTRAINT `pessoa_ibfk_2` FOREIGN KEY (`informacoes_fisicas_id`) REFERENCES `informacoesfisicas` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-CREATE TABLE user (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE usuario (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(255),
     last_name VARCHAR(255),
     email VARCHAR(255) UNIQUE,
