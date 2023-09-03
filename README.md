@@ -5,7 +5,7 @@
 <p>O objetivo deste projeto é implementar uma solução com o Spring Boot, onde os candidatos para doação de sangue são informados, passam por uma análise e os resultados são retornados em formato de dados.</p>
 <p>Este repositório é a parte back-end, o repositório do front-end pode ser encontrado em: https://github.com/Felipeisantos/DoadorSangue-front</p>
 
-## ✔️ Técnicas ferramentas e tecnologias utilizadas 
+## ✔️ Técnicas, ferramentas e tecnologias utilizadas:
 
 - ``Java 17``
 - ``InteliJ IDEA``
@@ -14,7 +14,7 @@
 - ``POO``
 - ``Design Pattern``
 
-<p>Frameworks utilizados:</p>
+## Frameworks utilizados
 
 ### Jpa: 
 <p>Framework utilizado para persistência de objetos.</p>
@@ -71,7 +71,7 @@ https://dev.mysql.com/downloads/mysql/
 - `cd notepad DDL-Create.sql`
 - `cd..`
  
-#### 3º no diretório da aplicação com o apache maven instalado, abra o terminal e execute o seguinte comando
+#### 3º No diretório da aplicação com o apache maven instalado, abra o terminal e execute o seguinte comando
 
 ` mvn spring-boot:run `
 
