@@ -4,7 +4,6 @@ import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
 import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatosInfo;
 import com.felipe.DoadorSangueAPI.entities.Pessoa;
 import com.felipe.DoadorSangueAPI.entities.Usuario;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.util.List;

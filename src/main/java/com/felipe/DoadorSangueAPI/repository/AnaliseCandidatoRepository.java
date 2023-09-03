@@ -1,7 +1,5 @@
 package com.felipe.DoadorSangueAPI.repository;
 
-import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatos;
-import com.felipe.DoadorSangueAPI.dto.AnaliseCandidatosInfo;
 import com.felipe.DoadorSangueAPI.entities.AnaliseCandidato;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

@@ -9,12 +9,11 @@ import com.felipe.DoadorSangueAPI.entities.Usuario;
 import com.felipe.DoadorSangueAPI.repository.UsuarioRepository;
 import com.felipe.DoadorSangueAPI.service.AutenticacaoService;
 import com.felipe.DoadorSangueAPI.service.JwtService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
