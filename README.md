@@ -2,8 +2,9 @@
 
 
 # Objetivo do projeto
-<p>O projeto tem como objetivo implementar uma solução com Spring Boot onde serão informados candidados para doação de sangue, será feito uma análise desses doadores e retornado em forma de dados.</p> 
-<p>Este repositorio é o backend: frontend -> https://github.com/Felipeisantos/DoadorSangue-front</p>
+<p>O objetivo deste projeto é implementar uma solução com o Spring Boot, onde os candidatos para doação de sangue são informados, passam por uma análise e os resultados são retornados em formato de dados.</p>
+<p>Este repositório é a parte back-end, o repositório do front-end pode ser encontrado em: https://github.com/Felipeisantos/DoadorSangue-front</p>
+
 ## ✔️ Técnicas ferramentas e tecnologias utilizadas 
 
 - ``Java 17``
@@ -67,7 +68,6 @@ https://dev.mysql.com/downloads/mysql/
 #### 2ª Execute o script DDL no banco de dados que se encontra na pasta patches
 
 - `cd patches`
-
 - `cd notepad DDL-Create.sql`
 - `cd..`
  
