@@ -16,29 +16,29 @@
 
 <p>Frameworks utilizados:</p>
 
-### jpa: 
-<p>framework utilizado para persistencia de objetos</p>
+### Jpa: 
+<p>Framework utilizado para persistência de objetos.</p>
 
-### hibernate:
-<p>framework utilizado para mapear os relacionamentos das entidades.</p>
+### Hibernate:
+<p>Framework utilizado para mapear os relacionamentos das entidades.</p>
 
-### org.json: 
-<p>framwork utilizado para trabalhar com json para serializar e deserializar objetos</p>
+### Org.json: 
+<p>Framwork utilizado para trabalhar com json para serializar e deserializar objetos.</p>
 
-### swagger-ui:
-<p>framework de documentação onde ficam disponiveis todos os end-points da api</p>
+### Swagger-ui:
+<p>Framework de documentação onde ficam disponíveis todos os end-points da api.</p>
 
-### lombok:
-<p>framework de produtividade onde as anotações geram getter setter e construtores para as entidades e objetos</p>
+### Lombok:
+<p>Framework de produtividade onde as anotações geram getter setter e construtores para entidades e objetos.</p>
 
-### spring-boot-devtools:
-<p>framework de produtividade ao salvar os arquivos do programa o spring faz uma recarga automática das classes sem derrubar a aplicação</p>
+### Spring-boot-devtools:
+<p>Framework de produtividade onde ao salvar os arquivos do programa o spring faz uma recarregamento automática das classes, sem derrubar a aplicação.</p>
 
-### spring-security:
-<p>framework de segurança onde é feito um filtro de todas as requisições</p>
+### Spring-security:
+<p>Framework de segurança onde é feito um filtro de todas as requisições.</p>
 
-### jwt:
-<p>framework de segurança que atua junto com o spring-security, ele é responsavel pela geração dos tokens jwt onde são armazenados login do usuario e permissões do mesmo</p>
+### Jwt:
+<p>Framework de segurança que atua junto com o spring-security, este é responsavel pela geração dos tokens jwt onde são armazenados o login do usuário e permissões do mesmo.</p>
 
 <h1 align="center"></h1>
 
@@ -71,7 +71,7 @@ https://dev.mysql.com/downloads/mysql/
 - `cd notepad DDL-Create.sql`
 - `cd..`
  
-#### 3º no diretório da aplicação com o apache maven instalado, abra o terminal e execute o seguinte comando:
+#### 3º no diretório da aplicação com o apache maven instalado, abra o terminal e execute o seguinte comando
 
 ` mvn spring-boot:run `
 
