@@ -42,9 +42,6 @@
 <h1 align="center"></h1>
 
 
-http://localhost:8080/swagger-ui/index.html
-
-
 #### Configurando ambiente do projeto 
 
 Instalar o maven e o java 17
@@ -78,6 +75,9 @@ https://dev.mysql.com/downloads/mysql/
 
 ` mvn spring-boot:run `
 
+
+#### 4º Para visualizar a documentação do projeto acesse: 
+http://localhost:8080/swagger-ui/index.html
 
 
 
