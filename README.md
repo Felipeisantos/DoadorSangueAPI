@@ -45,22 +45,36 @@
 http://localhost:8080/swagger-ui/index.html
 
 
-### Configurando ambiente do projeto 
+#### Configurando ambiente do projeto 
 
 Instalar o maven e o java 17
+
 https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+
 https://maven.apache.org/download.cgi
+
 https://maven.apache.org/install.html
+
+#### Instalar mysql V8
+
+https://dev.mysql.com/downloads/mysql/
+
 
 
 #### 1ª Faça um clone da aplicação
 
 - `git clone https://github.com/Felipeisantos/DoadorSangueAPI.git`
 - `cd DoadorSangueAPI`
- 
-### Usando o maven para executar a aplicação
 
-#### 2º no diretório da aplicação com o apache maven instalado, abra o terminal e execute o seguinte comando:
+  
+#### 2ª Execute o script DDL no banco de dados que se encontra na pasta patches
+
+- `cd patches`
+
+- `cd notepad DDL-Create.sql`
+- `cd..`
+ 
+#### 3º no diretório da aplicação com o apache maven instalado, abra o terminal e execute o seguinte comando:
 
 ` mvn spring-boot:run `
 
